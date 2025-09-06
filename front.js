@@ -1,27 +1,35 @@
-async function sendAlpacaMessage(messages) {
-  // Use your Vercel deployment URL here!
-  const apiUrl = "http://vercel-project-sanity.vercel.app/api/index.js"; // <-- CHANGE THIS
+// front.js
+const form = document.getElementById("chatForm");
+const messagesDiv = document.getElementById("messages");
+const input = document.getElementById("userInput");
 
-  const response = await fetch(apiUrl, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ messages }),
-  });
+// Change this to your deployed Vercel URL
+const API_URL = "https://YOUR-VERCEL-APP-NAME.vercel.app/api/chat";
 
-  const data = await response.json();
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const userMsg = input.value.trim();
+  if (!userMsg) return;
 
-  // If there's an error, handle it
-  if (data.error) {
-    console.error("API error:", data.error);
-    return "Error: " + data.error;
+  appendMessage("YOU", userMsg);
+  input.value = "";
+
+  try {
+    const res = await fetch(API_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: userMsg }),
+    });
+    const data = await res.json();
+    appendMessage("ALPACA", data.reply || "No reply");
+  } catch {
+    appendMessage("Error", "Unable to reach server");
   }
+});
 
-  return data.reply;
+function appendMessage(sender, text) {
+  const msg = document.createElement("div");
+  msg.innerHTML = `<strong>${sender}:</strong> ${text}`;
+  messagesDiv.appendChild(msg);
+  messagesDiv.scrollTop = messagesDiv.scrollHeight;
 }
-
-// Example usage: Send a message and log the reply
-sendAlpacaMessage([{ role: "user", content: "Hello Alpaca!" }])
-  .then(reply => {
-    console.log("Alpaca says:", reply);
-    // You could display this in your HTML page too!
-  });

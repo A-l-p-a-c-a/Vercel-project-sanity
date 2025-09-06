@@ -17,10 +17,7 @@ form.addEventListener("submit", async (e) => {
 
   
   try {
-    const thinkingMsg = appendMessage("ALPACA", "…");
-    thinkingMsg.textContent = data.reply || "No reply";
-  
-    const res = await fetch(API_URL, {
+      const res = await fetch(API_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ message: userMsg }),

@@ -24,7 +24,7 @@ export default async function handler(req, res) {
         "Authorization": `Bearer ${apiKey}`,
       },
       body: JSON.stringify({
-        model: "gpt-4", // or "gpt-3.5-turbo" if you don’t have GPT-4 access
+        model: "gpt-4.1-2025-04-14", // or "gpt-3.5-turbo" if you don’t have GPT-4 access
         messages: [{ role: "user", content: userMessage }],
         max_tokens: 256,
       }),

@@ -17,7 +17,10 @@ form.addEventListener("submit", async (e) => {
 
   
   try {
-      const res = await fetch(API_URL, {
+    const thinkingMsg = appendMessage("ALPACA", "…");
+    thinkingMsg.textContent = data.reply || "No reply";
+  }
+    const res = await fetch(API_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ message: userMsg }),
@@ -36,5 +39,4 @@ form.addEventListener("submit", async (e) => {
   messagesDiv.appendChild(msg);
   messagesDiv.scrollTop = messagesDiv.scrollHeight;
  }
-
 

@@ -14,14 +14,15 @@ form.addEventListener("submit", async (e) => {
   if (!userMsg) return;
 
   appendMessage("YOU", userMsg);
-  input.value = "";
+  input.value = ""; // Clear box after sending
 
   try {
-    const res = await fetch(API_URL, {
+    thinkingMsg.textContent = data.reply || "No reply";
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ message: userMsg }),
     });
+    const thinkingMsg = appendMessage("ALPACA", "…"); 
     const data = await res.json();
     appendMessage("ALPACA", data.reply || "No reply");
   } catch (err) {

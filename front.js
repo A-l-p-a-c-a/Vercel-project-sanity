@@ -12,11 +12,14 @@ form.addEventListener("submit", async (e) => {
   e.preventDefault();
   const userMsg = input.value.trim();
   if (!userMsg) return;
-
-  appendMessage("YOU", userMsg);
+   appendMessage("YOU", userMsg);
   input.value = "";
 
+  const thinkingMsg = appendMessage("ALPACA", "…");
+
   try {
+    thinkingMsg.textContent = data.reply || "No reply";
+
     const res = await fetch(API_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },

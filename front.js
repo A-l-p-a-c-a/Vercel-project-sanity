@@ -31,12 +31,18 @@ form.addEventListener("submit", async (e) => {
   }
 });
 
-  function appendMessage(sender, text) {
+function appendMessage(sender, text) {
   const msg = document.createElement("div");
-  msg.innerHTML = `<strong>${sender}:</strong> ${text}`;
+
+  const label = document.createElement("strong");
+  label.textContent = `${sender}:`;
+  msg.appendChild(label);
+
+  msg.append(` ${text}`); // adds plain text, not HTML
   messagesDiv.appendChild(msg);
   messagesDiv.scrollTop = messagesDiv.scrollHeight;
- }
+}
+
 
 
 

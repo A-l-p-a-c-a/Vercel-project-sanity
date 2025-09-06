@@ -33,3 +33,9 @@ function appendMessage(sender, text) {
   messagesDiv.appendChild(msg);
   messagesDiv.scrollTop = messagesDiv.scrollHeight;
 }
+
+} catch (err) {
+  console.error("Fetch error:", err);
+  appendMessage("Error", "Unable to reach server");
+}
+

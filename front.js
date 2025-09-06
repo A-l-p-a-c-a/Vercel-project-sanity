@@ -27,6 +27,11 @@ form.addEventListener("submit", async (e) => {
   }
 });
 
+
+} catch (err) {
+  console.error("Fetch error:", err);
+  appendMessage("Error", "Unable to reach server");
+}
 function appendMessage(sender, text) {
   const msg = document.createElement("div");
   msg.innerHTML = `<strong>${sender}:</strong> ${text}`;
@@ -34,8 +39,5 @@ function appendMessage(sender, text) {
   messagesDiv.scrollTop = messagesDiv.scrollHeight;
 }
 
-} catch (err) {
-  console.error("Fetch error:", err);
-  appendMessage("Error", "Unable to reach server");
-}
+
 

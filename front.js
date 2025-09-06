@@ -1,4 +1,4 @@
-I// front.js
+// front.js
 const form = document.getElementById("chatForm");
 const messagesDiv = document.getElementById("messages");
 const input = document.getElementById("userInput");

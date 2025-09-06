@@ -38,11 +38,3 @@ form.addEventListener("submit", async (e) => {
  }
 
 
-
-  // Append both the label element and the text string in one call.
-  msg.append(label, ` ${text}`); 
-
-  messagesDiv.appendChild(msg);
-  messagesDiv.scrollTop = messagesDiv.scrollHeight;
-}
-

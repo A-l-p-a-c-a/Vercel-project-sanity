@@ -1,8 +1,6 @@
 // /api/chat.js
-
 export default async function handler(req, res) {
   if (req.method !== "POST") {
-    // Only accept POST requests
     return res.status(405).json({ error: "Only POST allowed" });
   }
 
@@ -11,13 +9,10 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: "OpenAI API key not configured." });
   }
 
-  // Parse message from request body
-  let userMessage;
-  try {
-    // If you're using Next.js, you might need: const { message } = req.body;
-    userMessage = req.body.message;
-  } catch (err) {
-    return res.status(400).json({ error: "Invalid request body." });
+  // Extract user's message
+  const userMessage = req.body.message;
+  if (!userMessage) {
+    return res.status(400).json({ error: "No message provided." });
   }
 
   try {
@@ -29,9 +24,9 @@ export default async function handler(req, res) {
         "Authorization": `Bearer ${apiKey}`,
       },
       body: JSON.stringify({
-        model: "gpt-4.1-2025-04-14", // or "gpt-4" if you have access, or your preferred model!
+        model: "gpt-4", // or "gpt-3.5-turbo" if you don’t have GPT-4 access
         messages: [{ role: "user", content: userMessage }],
-        max_tokens: 256, // Optional, adjust as needed
+        max_tokens: 256,
       }),
     });
 
@@ -41,7 +36,9 @@ export default async function handler(req, res) {
     }
 
     const openaiData = await openaiRes.json();
-    const reply = openaiData.choices?.[0]?.message?.content || "No response from AI.";
+    const reply =
+      openaiData.choices?.[0]?.message?.content ||
+      "No response from AI.";
 
     return res.status(200).json({ reply });
 

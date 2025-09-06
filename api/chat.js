@@ -49,3 +49,17 @@ export default async function handler(req, res) {
   }
 }
   
+    if (!response.ok) {
+      const err = await response.text();
+      res.status(500).json({ error: "OpenAI error", details: err });
+      return;
+    }
+
+    const data = await response.json();
+    res.status(200).json({ reply: data.choices[0].message.content });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Request failed" });
+  }
+}
+  

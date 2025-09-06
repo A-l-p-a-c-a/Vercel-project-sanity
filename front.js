@@ -32,8 +32,12 @@ form.addEventListener("submit", async (e) => {
 
   function appendMessage(sender, text) {
   const msg = document.createElement("div");
-  const label = document.createElement("strong");
-  label.textContent = `${sender}:`;
+  msg.innerHTML = `<strong>${sender}:</strong> ${text}`;
+  messagesDiv.appendChild(msg);
+  messagesDiv.scrollTop = messagesDiv.scrollHeight;
+ }
+
+
 
   // Append both the label element and the text string in one call.
   msg.append(label, ` ${text}`); 

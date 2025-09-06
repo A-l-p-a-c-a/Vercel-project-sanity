@@ -6,6 +6,8 @@ const input = document.getElementById("userInput");
 // Change this to your deployed Vercel URL
 const API_URL = "https://vercel-project-sanity.vercel.app/api/chat";
 
+
+
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
   const userMsg = input.value.trim();
@@ -22,17 +24,13 @@ form.addEventListener("submit", async (e) => {
     });
     const data = await res.json();
     appendMessage("ALPACA", data.reply || "No reply");
-  } catch {
+  } catch (err) {
+    console.error("Fetch error:", err);
     appendMessage("Error", "Unable to reach server");
   }
 });
 
-
-} catch (err) {
-  console.error("Fetch error:", err);
-  appendMessage("Error", "Unable to reach server");
-}
-function appendMessage(sender, text) {
+ function appendMessage(sender, text) {
   const msg = document.createElement("div");
   msg.innerHTML = `<strong>${sender}:</strong> ${text}`;
   messagesDiv.appendChild(msg);

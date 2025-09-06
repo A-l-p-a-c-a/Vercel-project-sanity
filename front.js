@@ -1,17 +1,27 @@
-// front.js
-  async function sendMessage() {
-  const input = document.getElementById('input').value;
-  const response = await fetch('https://https://vercel-project-sanity.vercel.app/api/data') // Replace with your Vercel backend URL
-            .then(response => response.json())
-            .then(data => console.log(data))
-            .catch(error => console.error('Error:', error));
+async function sendAlpacaMessage(messages) {
+  // Use your Vercel deployment URL here!
+  const apiUrl = "http://vercel-project-sanity.vercel.app/api/index.js"; // <-- CHANGE THIS
+
+  const response = await fetch(apiUrl, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ messages }),
   });
+
   const data = await response.json();
 
-  // Display the AI's reply somewhere, e.g., in a div with id="chatlog"
-  if (data.reply) {
-    document.getElementById('chatlog').innerText += `Bot: ${data.reply}\n`;
-  } else if (data.error) {
-    document.getElementById('chatlog').innerText += `Error: ${data.error}\n`;
+  // If there's an error, handle it
+  if (data.error) {
+    console.error("API error:", data.error);
+    return "Error: " + data.error;
   }
+
+  return data.reply;
 }
+
+// Example usage: Send a message and log the reply
+sendAlpacaMessage([{ role: "user", content: "Hello Alpaca!" }])
+  .then(reply => {
+    console.log("Alpaca says:", reply);
+    // You could display this in your HTML page too!
+  });

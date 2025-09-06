@@ -7,7 +7,6 @@ const input = document.getElementById("userInput");
 const API_URL = "https://vercel-project-sanity.vercel.app/api/chat";
 
 
-
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
   const userMsg = input.value.trim();

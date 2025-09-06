@@ -1,11 +1,10 @@
 // front.js
-
-async function sendMessage() {
+  async function sendMessage() {
   const input = document.getElementById('input').value;
-  const response = await fetch('/api/index', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ message: input })
+  const response = await fetch('https://https://vercel-project-sanity.vercel.app/api/data') // Replace with your Vercel backend URL
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error('Error:', error));
   });
   const data = await response.json();
 

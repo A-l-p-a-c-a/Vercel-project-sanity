@@ -35,7 +35,7 @@ form.addEventListener("submit", async (e) => {
   const label = document.createElement("strong");
   label.textContent = `${sender}:`;
   
-  msg.innerHTML = `<strong>${sender}:</strong> ${text}`;
+  
   messagesDiv.appendChild(msg);
   messagesDiv.scrollTop = messagesDiv.scrollHeight;
  }

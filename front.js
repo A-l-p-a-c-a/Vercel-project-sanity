@@ -14,15 +14,14 @@ form.addEventListener("submit", async (e) => {
   if (!userMsg) return;
 
   appendMessage("YOU", userMsg);
-  input.value = ""; // Clear box after sending
+  input.value = "";
 
   try {
-    thinkingMsg.textContent = data.reply || "No reply";
+    const res = await fetch(API_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ message: userMsg }),
     });
-    const thinkingMsg = appendMessage("ALPACA", "…"); 
     const data = await res.json();
     appendMessage("ALPACA", data.reply || "No reply");
   } catch (err) {
@@ -31,18 +30,14 @@ form.addEventListener("submit", async (e) => {
   }
 });
 
-function appendMessage(sender, text) {
+  function appendMessage(sender, text) {
   const msg = document.createElement("div");
-
   const label = document.createElement("strong");
   label.textContent = `${sender}:`;
-  msg.appendChild(label);
-
-  msg.append(` ${text}`); // adds plain text, not HTML
+  
+  msg.innerHTML = `<strong>${sender}:</strong> ${text}`;
   messagesDiv.appendChild(msg);
   messagesDiv.scrollTop = messagesDiv.scrollHeight;
-}
-
-
+ }
 
 

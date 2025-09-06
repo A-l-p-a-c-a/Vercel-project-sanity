@@ -30,7 +30,11 @@ form.addEventListener("submit", async (e) => {
   }
 });
 
- function appendMessage(sender, text) {
+  function appendMessage(sender, text) {
+  const msg = document.createElement("div");
+  msg.innerHTML = `<strong>${sender}:</strong> ${text}`;
+  messagesDiv.appendChild(msg);
+  messagesDiv.scrollTop = messagesDiv.scrollHeight;
  }
 
 

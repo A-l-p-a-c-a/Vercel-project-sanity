@@ -3,18 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <title>Chat with OpenAI</title>
-  <style>
-  .messages div { font-size: 16px; }
-</style>
-
 </head>
 <body>
-<div class="grid-container">
-   <div class="container">
-     <iframe src= "https://a-l-p-a-c-a.github.io/Vercel-project-sanity/"
-       </iframe>
-   </div></div>
-
+     <h1>AI Chat</h1>
+    <form id="chatForm">
+   <input id="userInput" autocomplete="off" placeholder="Finding alpaca" />
+  <button type="submit">Send</button>
+  
+       </form>
+<div id="messages"></div>
 <script src="front.js"></script>
 
 </body>

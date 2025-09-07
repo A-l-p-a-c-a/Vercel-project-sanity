@@ -1,40 +1,17 @@
-/* You don’t deserve this, but here’s your damn stylesheet. */
-
-body {
-  background: #000;
-  color: #ff0000;
-  font-family: 'Impact', sans-serif;
-  margin: 0;
-  padding: 0;
-  text-align: center;
+messages {
+  white-space: pre-wrap;
+  font-family: monospace;
+  margin-top: 1em;
 }
-
-.header, .footer {
-  background: #111;
-  padding: 15px;
-  border: 2px solid #ff0000;
-  text-transform: uppercase;
-  letter-spacing: 2px;
+.user {
+  color: #0366d6;
 }
-
-.footer {
-  font-size: 14px;
+.ai {
+  color: #6f42c1;
 }
-
-.main-img {
-  max-width: 50px;  /* adjust as needed */
-  height: 50px;
-  display: block;
-  margin: 0 auto 15px auto;
-  border: 3px solid #ff0000;
-  border-radius: 50%;
-}
-
-.img {
-  width: 100px;        /* force a reasonable size */
-  max-width: 75vw;     /* responsive: never wider than 80% of screen */
-  height: auto;        /* keep proportions */
-  display: block;
+  
+.messages div { font-size: 16px; 
+              }  display: block;
   margin: 0 auto 1px auto;
   border: 0px solid #ff0000;
   border-radius: 50%;

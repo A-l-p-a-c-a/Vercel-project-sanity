@@ -4,7 +4,7 @@ const messagesDiv = document.getElementById("messages");
 const input = document.getElementById("userInput");
 
 // Change this to your deployed Vercel URL
-const API_URL = "https://vercel-project-sanity-2wjm.vercel.app/https://github.com/Ulrich-Tonmoy/cheat-sheets.git/api/chat";
+const API_URL = "https://vercel-project-sanity.vercel.app/";
 
 
 form.addEventListener("submit", async (e) => {

@@ -14,22 +14,22 @@
               }
 
 
-  .grid-container {
+  /* grid-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Adjust the number of columns */
-    gap: 25px; /* Adjust the gap between items */
+    grid-template-columns: repeat(3, 1fr); Adjust the number of columns
+    gap: 25px; /* Adjust the gap between items 
   }
 
   .container {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: white; /* Set the background color for your grid items */
-    border: 20px solid black; /* Add border for clarity */
-    padding: 25px; /* Add padding for spacing */
+    background-color: white; /* Set the background color for your grid items
+    border: 20px solid black; /* Add border for clarity
+    padding: 25px; /* Add padding for spacing
   }
 
-/* Style all iframes on the page */
+/* Style all iframes on the page 
 iframe {
   width: 100%;
   height: 500px;
@@ -38,7 +38,7 @@ iframe {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Style a specific iframe with an ID */
+Style a specific iframe with an ID */
 #my-specific-iframe {
   border: none;
   margin: 25px;

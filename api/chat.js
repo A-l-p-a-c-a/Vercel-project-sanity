@@ -47,9 +47,5 @@ export default async function handler(req, res) {
     console.error(err);
     res.status(500).json({ error: "Request failed" });
   }
-  import OpenAI from 'openai';
-  const client = new OpenAI({
-  logLevel: 'debug', // Show all log messages
-});
-
+}
   

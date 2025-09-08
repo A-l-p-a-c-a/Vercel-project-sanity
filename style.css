@@ -14,7 +14,20 @@
               }
 
 
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Adjust the number of columns */
+    gap: 25px; /* Adjust the gap between items */
+  }
 
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white; /* Set the background color for your grid items */
+    border: 20px solid black; /* Add border for clarity */
+    padding: 25px; /* Add padding for spacing */
+  }
 
 /* Style all iframes on the page */
 iframe {

@@ -36,3 +36,7 @@ form.addEventListener("submit", async (e) => {
   messagesDiv.scrollTop = messagesDiv.scrollHeight;
  }
 
+  import OpenAI from 'openai';
+  const client = new OpenAI({
+  logLevel: 'debug', // Show all log messages
+});
